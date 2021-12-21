@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Wudimei.js DragDrop javascript drag drop,javascript framework,javascript moveable</title>
+		<meta http-equiv="keyword" content="Wudimei.js DragDrop javascript drag drop,javascript framework,javascript moveable " />
+        <meta http-equiv="description" content="Wudimei.js DragDrop javascript drag drop,javascript framework,javascript moveable" />
+        
+		<script type="text/javascript" src="../../wudimei.js"></script>
+		<script type="text/javascript" src="./../dragdrop/DragDrop.js"></script>
+		<script type="text/javascript" src="./../resizable/Resizable.js"></script>
+		<link rel="stylesheet" href="./../resizable/Resizable.css" />
+		
+		<script type="text/javascript">
+			var dom = new Wudimei.Dom();
+			dom.loaded( function() {
+				
+
+				var div2 = new Wudimei.DragDrop({
+					handleId:"handle2",
+					parentId:"box2",
+					onDragEnd: function(el,evt) {
+						//el:Wudimei.Dom document object,element ; event:Wudimei.Event
+						alert( evt.getTarget().getHtml() );
+					}
+				});
+				
+				var resize1 = new Wudimei.Resizable({
+					id:"box2" //element id : <div id="box" />
+				});
+				
+				var div1 = new Wudimei.DragDrop({
+					handleId:"handle",
+					parentId:"box"
+				});
+				
+				var div3= new Wudimei.DragDrop({
+					handleId:"handle3",
+					parentId:"box3",
+					onDragEnd: function(el,evt) {
+						//el:Wudimei.Dom object,document object ; event:Wudimei.Event
+						alert( evt.getTarget().getHtml() +el.elements[0].getElementById("box3").innerHTML );
+					}
+				});
+				//var lt = dom.query("#test").absLeftTop();
+				//alert(lt[0] + "," + lt[1] );
+			});
+		</script>
+	</head>
+	<body>
+		Wudimei.js DragDrop javascript drag drop,javascript framework,javascript moveable
+		<br />
+		<br />
+		<br />
+
+		<div id="box" style="display:block;border:1px solid green;width:200px;height:200px;left:200px;top:200px;position:absolute;">
+			<div id="handle" style="background-color:red" >
+				专业jquery开发
+			</div>
+			我写了一个叫wudimei.js的javascript框架。这个拖动就是结合wudimei.js写的插件。 QQ 290359552
+		</div>
+		
+		
+		<div id="box2" style="display:block;border:1px solid green;width:200px;height:200px;left:500px;top:200px;position:absolute;">
+			<div id="handle2" style="background-color:red">
+				专业PHP开发。  QQ 290359552
+			</div>
+			ecshop,google map api开发
+		</div>
+		
+		<div id="box3" style="display:block;border:1px solid green;width:200px;height:200px;left:800px;top:200px;position:absolute;">
+			<div id="handle3" style="background-color:red">
+				第三个div
+			</div>
+			ecshop,google map api这三个div
+		</div>
+		
+		<div id="log">
+		</div>
+	</body>
+</html>

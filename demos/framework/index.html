@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://wwdom.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+    	<title>ajax menu - wudimei.com</title>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<script type="text/javascript" src="../../lib/wudimei.js"></script>
+    	<script type="text/javascript">
+    	 
+    	  var dom=new Wudimei.Dom();
+    	  dom.loaded( function(){
+    		  //alert("event trigger after document is loaded!");
+    		  dom.query("#clickEvent").on("click",function(sender,event){
+    		    
+    		    alert( "id:" + sender.getAttr("id") + ",  value:" + sender.getAttr("value") + "\n" +
+    		      "pageX=" +event.getPageX() + ",pageY=" + event.getPageY() 
+    		    );
+    		  });
+    		  
+    		  dom.query("input.buttonGroup").on("click",function(sender,event){
+    		    alert( "id:" + sender.getAttr("id") + ",  value:" + sender.getAttr("value") + "\n" +
+    		      "pageX=" +event.getPageX() + ",pageY=" + event.getPageY()
+    		    );  
+    		  });
+    		  dom.query("#countryBtn").on("click", function( sender,event ){
+    		    var d= dom.query('body input[name="country"][type="radio"]:checked').getAttr("value");
+            alert( d  );
+    		  });
+    		  dom.query("#keyCode").on("keyup" , function( sender,evt ){
+    		    
+    		    if( evt.keyCode() == 86 && evt.ctrlKey() )
+            {
+              alert("paste!");
+            }
+            
+    		    alert( evt.keyCode()+ " ,keyChar:" + evt.keyChar() +
+    		    ",shift key:" + evt.shiftKey() + ",ctrl key:" + evt.ctrlKey()+
+    		    ",altKey:" + evt.altKey() + ",metaKey:" + evt.metaKey() );
+    		    
+    		    
+    		  });
+    		  
+    	  });//end of dom.loaded()
+    	  
+    	  function log(str)
+    	  {
+    	    dom.s("#log").setHtml( dom.s("#log").getHtml() + "<br />" + str );
+    	  }
+    	  
+    	  function getHtml()
+    	  {
+    		  var htm = dom.s("#wudimeiDiv").getHtml() ;
+    		  alert( htm );
+    	  }
+    	  function setHtml()
+    	  {
+    		  dom.s("#wudimeiDiv").setHtml("<strong style='padding:10px;font-size:20px;'>hello,my name is yang qing rong!</strong>");
+    	  }
+    	  
+    	  function walkTd()
+    	  {
+    		  var html = "--method1--\n";
+    		  dom.clear().s("#beaties").s("tr").s("td").walk( function(i,e){
+    			  html += e.getHtml() + "\r\n";
+    		  });
+    		  
+    		  html += "--method2--\n";
+    		  dom.query("#beaties tr td").walk( function(i,e){
+    			 html += e.getHtml() + "\r\n"; 
+    		  });
+    		  
+    		  html += "--method3--\n";
+    		  dom.query("#beaties tr .red").walk( function(i,e){
+    			 html += e.getHtml() + "\r\n"; 
+    		  });
+    		  
+    		  html +="--method4--\n";
+    		  dom.query("#beaties tr th.red").walk( function(i,e){
+             html += e.getHtml() + "\r\n"; 
+          });
+    		  alert( html );
+    		  
+    	  }
+    	  
+    	  function hide()
+    	  {
+    	    dom.query("#beaties").hide();
+    	  }
+    	  
+    	  function show()
+    	  {
+    	    dom.query("#beaties").show();
+    	  }
+    	  
+    	  function attr()
+        {
+          var b =dom.query("#beaties").getAttr("border");
+          alert( "the border is:" +b + "\n" );
+          dom.query("#beaties").setAttr("border",20);
+        }
+        
+        function className()
+        {
+          var c =dom.query("#beaties").getClassName();
+          alert("class Name is:" +c+ "\n" );
+        }
+        
+        function width()
+        {
+          alert( dom.query("table").setWidth("500px").getWidth() );
+        }
+        
+        function ajaxGet()
+        {
+          
+          var r=new Wudimei.Request();
+                   
+          r.ajax({
+            method:"GET",
+            url:"request.php?a=b&c=d",
+            params:{name:"YangQingRong","age&":26 ,"phone[0]":"13714715608","phone[1]":"&wudimei.com"},
+            success:function(txt,xml){
+            alert( txt );
+            }
+          });
+          
+          r.ajax({
+            method:"GET",
+            url:"request.php?a=b&c=d",
+            params:{name:"YangQingRong","age&":26 ,"phone[0]":"13714715608","phone[1]":"&wudimei.com", "type":"xml"},
+            success:function(txt,xml){
+              alert( txt );
+            }
+          });
+          
+        }
+        
+        function ajaxPost()
+        {
+          var r=new Wudimei.Request();
+          
+                  
+          r.ajax({
+            method:"GET",
+            url:"request.php?a=b&c=d",
+            params:{name:"YangQingRong","age":26 ,"phone[0]":"13714715608","phone[1]":"wudimei.com"},
+            success:function(txt,xml){
+            alert( txt );
+            }
+          });
+          
+          r.ajax({
+            method:"GET",
+            url:"request.php?a=b&c=d",
+            params:{name:"YangQingRong","age":26,"type":"xml"},
+            success:function(txt,xml){
+              alert( txt );
+            }
+          });
+           
+        }
+         
+        
+    	</script>
+	</head>
+	<body>
+	  wudimei.js version 1.1
+		<a href="../../">back to wudimei.js homepage</a>
+		<div id="wudimeiDiv" >
+			welcome use <b>wudimei.js</b> framework
+		</div>
+		<table id="beaties" border="1" class="open big" style="width:5px;">
+		  <tr>
+		    <th class="blue red"> name</th> 
+		  </tr>
+			<tr>
+				<td>lucy</td>
+			</tr>
+			<tr>
+				<td class="green red">lily</td>
+			</tr>
+		</table>
+		
+		<a href="javascript:getHtml();">get html as text</a> <br />
+		<a href="javascript:setHtml();">set html with other text</a> <br />
+		<a href="javascript:walkTd();">walk the td elements</a> <br />
+		<a href="javascript:hide();">Hide Table</a> <br />
+		<a href="javascript:show();">Show Table</a> <br />
+		<a href="javascript:attr();">attribute</a> <br />
+		<a href="javascript:className();">className</a> <br />
+		<a href="javascript:width();">width</a> <br />
+		<input type="button" id="clickEvent" value="button onclick"/>
+		<input type="button" class="buttonGroup" id="buttonGroup1" value="button group member 1"/>
+		<input type="button" class="buttonGroup" id="buttonGroup2" value="button group member 2"/>
+		<table border="2">
+		  <tr>
+		    <td>wudimei.js</td>
+		  </tr>
+		</table>
+		<a href="javascript:ajaxPost();">ajax post</a> <a href="javascript:ajaxGet();">ajax get</a> <br />
+		
+		<input type="radio" name="country" addr="a b" value="china" />china
+    <input type="radio" name="country" value="english"   checked="checked" />english
+    <input type="button" id="countryBtn" value="show selected country" /> <br />
+    key code<input type="text" id="keyCode" />
+		<div id="log"></div>
+	</body>
+</html>

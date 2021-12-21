@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+    	<title>ajax menu - wudimei.com</title>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<script type="text/javascript" src="../../lib/wudimei.js"></script>
+    	<script type="text/javascript" src="../../lib/menu/menu.js"></script>
+    	<link href="../../lib/menu/menu.css" rel="stylesheet" />
+    	
+	</head>
+	<body>
+		<span id="file" > File(F)
+			<div id="id2"  >
+				 
+				<ul>
+					<li id="c2"  class="a">
+						<a href="javascript:void(0)">new</a> <br />
+					</li>
+					<li>
+						<a href="javascript:void(0)"  class="a">open</a> <br />
+					</li>
+				</ul>
+			</div>
+		</span>
+		 
+		<script type="text/javascript">
+    	
+    	  var obj=new Wudimei();
+    	  //取得id="id2"下面的li的第一个元素的innerHtml
+    	  //var htm = obj.s("#id2").s("li").getHtml() ;
+    	  //alert( htm );
+    	   //取得id2下面的链接，并遍历，类似jquery的each
+    	 // var htm = obj.s("#id2").s("a").walk(function(i,e){
+    	//	  alert( i+"," +e.getHtml() );
+    	 // });
+    	  
+    	 
+    	   //取得id下面class="a" 的元素
+    	 // var htm = obj.s("#id2").s(".a").walk(function(i,e){
+    	 //	  alert( i+"," +e.getHtml() );
+    	 //  }).setHtml("abc");
+    	   //
+    	</script>
+	</body>
+</html>

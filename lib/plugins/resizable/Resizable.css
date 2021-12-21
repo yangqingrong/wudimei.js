@@ -1,0 +1,31 @@
+
+.Wudimei_Resizable_Control{
+	border:1px solid gray;display:block;width:8px;height:8px;position:absolute;background-color:white;z-index:10;
+}
+.Wudimei_Resizable_lt{
+	left:-10px;top:-10px;cursor:nw-resize;
+} 
+.Wudimei_Resizable_mt{
+	left:50%;top:-10px;cursor:n-resize;
+} 
+.Wudimei_Resizable_rt{
+	right:-10px;top:-10px;cursor:ne-resize;
+} 
+.Wudimei_Resizable_lm{
+	left:-10px;top:50%;cursor:w-resize;
+} 
+.Wudimei_Resizable_rm{
+	right:-10px;top:50%;cursor:e-resize;
+} 
+.Wudimei_Resizable_lb{
+	left:-10px;bottom:-10px;cursor:sw-resize;
+} 
+.Wudimei_Resizable_mb{
+	left:50%;bottom:-10px;cursor:s-resize;
+} 
+.Wudimei_Resizable_rb{
+	right:-10px;bottom:-10px;cursor:se-resize;
+} 
+//LeftTop 	   MiddleTop    RightTop
+//LeftMiddle                RightMiddle
+//LeftBottom   MiddleBottom RightBottom
